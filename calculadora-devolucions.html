@@ -1,39 +1,21 @@
  <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#667eea">
-    <meta name="description" content="Aplicació web per consultar horaris FGC, calcular devolucions i més">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="FGC utilitats">
-    <link rel="manifest" href="/utilitats-pwa/manifest.json">
-    <link rel="icon" type="image/png" href="/images/icon-192x192.png">
-    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6CHCYVEYTN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <!-- Register Service Worker -->
-    <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/utilitats-pwa/service-worker.js')
-            .then((registration) => {
-            console.log('✓ Service Worker registrat:', registration);
-            })
-            .catch((error) => {
-            console.error('Error al registrar Service Worker:', error);
-            });
-        });
-    }
-    </script>
-
+  gtag('config', 'G-6CHCYVEYTN');
+</script>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora devolucions</title>
     <link rel="stylesheet" href="menu.css"> <!-- Estils del menú -->
     <link rel="stylesheet" href="calculadora-devolucions.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@200..700&display=swap">
-    
 </head>
 <body>
     <!-- Menú reutilitzable -->
@@ -50,7 +32,7 @@
             <a href="isic.html">Pantalles ISIC</a>
         </div>
     </div>
-    <h1>Devolucions 2026</h1>
+    <h1>🚨 Devolucions 2026 2.0 🚀</h1>
     <form id="formulari">
         <input type="number" id="import" step="0.05" min="0.05" max="10" placeholder="Ex.: 4.15" required>
         <button type="submit">Calcular</button>
@@ -61,12 +43,12 @@
     </div>
     <p id="error" class="error-message"></p>
     <footer>
-        J_E_O © <span id="current-year"></span>
+        J_E_O © <span id="current-year"></span> (<b>Versió sense FN/FM</b>)
     </footer>
 
     <div class="contact-container">
-        <p class="small-text">👇 Un error? Una suggerència? Una felicitació? 👇</p>
-        <a href="https://fgcagents.notion.site/30cb9b5cbe768042a494f9885bb59d68" target="_blank" rel="noopener" class="contact-btn">
+                <p class="small-text">👇 Un error? Una suggerència? Una felicitació? 👇</p>
+    <a href="https://fgcagents.notion.site/30cb9b5cbe768042a494f9885bb59d68" target="_blank" rel="noopener" class="contact-btn">
         🙋‍♀️  Contacte</a>
     </div>
 
