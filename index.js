@@ -59,8 +59,10 @@ async function fetchAllRecordsFromAPI(stationCode) {
     const limit = 100;
     let hasMore = true;
 
+    // Cerquem per prefix de stop_id (p.ex. "SR" trobarà "SR1", "SR2"...) en comptes
+    // de parent_station, que per algunes estacions (com Nacions Unides) ve buit/erroni.
     while (hasMore) {
-        const url = `${baseUrl}?limit=${limit}&offset=${offset}&where=parent_station="${stationCode}"`;
+        const url = `${baseUrl}?limit=${limit}&offset=${offset}&where=startswith(stop_id,"${stationCode}")`;
         
         try {
             const response = await fetch(url);
@@ -132,15 +134,6 @@ async function fetchTrainData(stationCode, trainCount, selectedTime, lineName) {
     try {
         // Obtenir dades (cache o API)
         let allTrains = await getStationData(stationCode);
-
-        // Si no hi ha resultats i l'estació és NA, busquem per nom
-        if (stationCode === 'NA' && allTrains.length === 0) {
-            const baseUrl = 'https://dadesobertes.fgc.cat/api/explore/v2.1/catalog/datasets/viajes-de-hoy/records';
-            const url = `${baseUrl}?limit=100&where=stop_name in ("Abrera","NACIONS UNIDES","Nacions Unides")`;
-            const response = await fetch(url);
-            const data = await response.json();
-            allTrains = data.results || [];
-        }
 
         console.log('Total trens obtinguts:', allTrains.length);
 
